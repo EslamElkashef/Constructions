@@ -10,3 +10,4 @@
 <!-- custom Css-->
 <link href="{{ URL::asset('assets/css/custom.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 {{-- @yield('css') --}}
+<link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">

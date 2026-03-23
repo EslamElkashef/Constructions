@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'unit_name' => 'اسم الوحدة',
+    'enter_unit_name' => 'أدخل اسم الوحدة',
+    'address' => 'العنوان',
+    'enter_address' => 'أدخل عنوان الوحدة',
+    'phone' => 'رقم الهاتف',
+    'enter_phone' => 'أدخل رقم الهاتف (اختياري)',
+    'status' => 'الحالة',
+    'available' => 'متاحة',
+    'reserved' => 'محجوزة',
+    'sold' => 'مباعة',
+    'unit_type' => 'نوع الوحدة',
+    'select_type' => 'اختر النوع...',
+    'employee' => 'الموظف',
+    'select_unit_type_first' => 'الرجاء اختيار نوع الوحدة أولاً لعرض تفاصيلها.',
+    'enter_field' => 'أدخل :field',
+    'select_field' => 'اختر :field',
+    'unit_created_successfully' => 'تم حفظ الوحدة بنجاح.',
+    'unit_updated_successfully' => 'تم تحديث الوحدة بنجاح.',
+    'select_unit_type_first' => 'من فضلك اختر نوع الوحدة أولاً.',
+    'enter_field' => 'ادخل :field',
+    'select_field' => 'اختر :field',
+    'features' => 'المميزات',
+    // الحقول الخاصة بالمميزات
+    'has_guard' => 'بها حارس',
+    'has_garage' => 'بها جراج',
+    'has_pool' => 'بها حمام سباحة',
+];

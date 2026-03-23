@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'unit_name' => 'Unit Name',
+    'enter_unit_name' => 'Enter the name of the unit',
+    'address' => 'Address',
+    'enter_address' => 'Enter the unit address',
+    'phone' => 'Phone Number',
+    'enter_phone' => 'Enter contact number (optional)',
+    'status' => 'Status',
+    'available' => 'Available',
+    'reserved' => 'Reserved',
+    'sold' => 'Sold',
+    'unit_type' => 'Unit Type',
+    'select_type' => 'Select a type...',
+    'employee' => 'Employee',
+    'select_unit_type_first' => 'Please select a unit type first to display its details.',
+    'enter_field' => 'Enter :field',
+    'select_field' => 'Select :field',
+    'unit_created_successfully' => 'Unit has been created successfully.',
+    'unit_updated_successfully' => 'Unit has been updated successfully.',
+    'select_unit_type_first' => 'Please select a unit type first.',
+    'enter_field' => 'Enter :field',
+    'select_field' => 'Select :field',
+    'features' => 'Features',
+    // Feature fields
+    'has_guard' => 'Has guard',
+    'has_garage' => 'Has garage',
+    'has_pool' => 'Has swimming pool',
+];

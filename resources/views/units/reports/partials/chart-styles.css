@@ -1,0 +1,112 @@
+/* ------------------ Chart Box ------------------ */
+.chart-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 15px;
+    min-height: 330px;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+/* يظهر تدريجياً بعد التحميل */
+.chart-box.loaded {
+    opacity: 1;
+}
+
+/* ------------------ Spinner ------------------ */
+.chart-box .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(0,0,0,0.1);
+    border-top: 4px solid #4C8BF5;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ------------------ No Data Message ------------------ */
+.no-data-message {
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+}
+
+.no-data-message.show {
+    opacity: 1;
+}
+
+/* ------------------ Card Styling ------------------ */
+.report-card {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* ------------------ Titles ------------------ */
+.report-card h4 {
+    font-weight: 700;
+    color: #3b4a66;
+    margin-bottom: 15px;
+}
+
+.report-card h5 {
+    font-weight: 600;
+    color: #4C8BF5;
+    margin-bottom: 10px;
+}
+
+/* ------------------ Table Styling ------------------ */
+.report-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.report-card table th,
+.report-card table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.report-card table th {
+    background-color: #f1f3f6;
+    font-weight: 600;
+}
+
+/* ------------------ Colors for Charts (optional) ------------------ */
+.chart-color-1 { color: #4C8BF5; }
+.chart-color-2 { color: #50C4B7; }
+.chart-color-3 { color: #F2A742; }
+.chart-color-4 { color: #EF6F6C; }
+.chart-color-5 { color: #8F86F8; }
+
+/* ------------------ Responsive ------------------ */
+@media (max-width: 768px) {
+    .chart-box {
+        min-height: 250px;
+    }
+    .report-card h4 { font-size: 1.2rem; }
+    .report-card h5 { font-size: 1rem; }
+}

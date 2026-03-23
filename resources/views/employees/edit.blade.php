@@ -1,101 +1,141 @@
 @extends('layouts.master')
+
+@section('title', 'Edit Employee')
+
 @section('content')
-    <div class="container">
-        @include('partials.alerts')
-        <h3>Edit Data For Employee</h3>
+    @component('components.breadcrumb')
+        @slot('li_1')
+            HR
+        @endslot
+        @slot('title')
+            Edit Employee
+        @endslot
+    @endcomponent
 
-        <form method="POST" action="{{ route('employees.update', $employee->id) }}" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h5 class="fw-semibold mb-4">Update Employee Information</h5>
 
-            <div class="mb-3">
-                <label class="form-label">Name</label>
-                <input type="text" name="name" class="form-control" value="{{ old('name', $employee->name) }}" required>
-            </div>
+            <form action="{{ route('employees.update', $employee->id) }}" method="POST" enctype="multipart/form-data"
+                class="employee-edit-form">
+                class="employee-edit-form">
+                @csrf
+                @method('PUT')
 
-            <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" value="{{ old('email', $employee->email) }}"
-                    required>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Phone</label>
-                <input type="text" name="phone" class="form-control" value="{{ old('phone', $employee->phone) }}">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Address</label>
-                <input type="text" name="address" class="form-control" value="{{ old('address', $employee->address) }}">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Personal Image</label>
-                <input type="file" name="personal_image" class="form-control" accept="image/*">
-
-                @error('personal_image')
-                    <div class="text-danger small">{{ $message }}</div>
-                @enderror
-
-                @if (!empty($employee->personal_image))
-                    <div class="mt-2">
-                        <p class="mb-1">Current Photo:</p>
-                        <img src="{{ asset('storage/' . $employee->personal_image) }}" alt="Employee Personal Image"
-                            style="max-width:150px; height:auto;">
+                <div class="row g-3">
+                    {{-- Name --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="name" value="{{ old('name', $employee->name) }}" class="form-control"
+                            required>
                     </div>
-                @endif
-            </div>
 
-
-            <div class="mb-3">
-                <label class="form-label">National ID</label>
-                <input type="text" name="national_id" class="form-control"
-                    value="{{ old('national_id', $employee->national_id) }}">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">National ID Image</label>
-                <input type="file" name="national_id_image" class="form-control" accept="image/*">
-
-                @error('national_id_image')
-                    <div class="text-danger small">{{ $message }}</div>
-                @enderror
-
-                @if (!empty($employee->national_id_image))
-                    <div class="mt-2">
-                        <p class="mb-1">Current Image:</p>
-                        <img src="{{ asset('storage/' . $employee->national_id_image) }}" alt="Employee National ID Image"
-                            style="max-width:150px; height:auto;">
+                    {{-- Email --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" value="{{ old('email', $employee->email) }}"
+                            class="form-control">
                     </div>
-                @endif
-            </div>
 
+                    {{-- Phone --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Phone</label>
+                        <input type="text" name="phone" value="{{ old('phone', $employee->phone) }}"
+                            class="form-control">
+                    </div>
 
-            <div class="mb-3">
-                <label class="form-label">Birthday</label>
-                <input type="text" name="birthday" class="form-control"
-                    value="{{ old('birthday', $employee->birthday) }}">
-            </div>
+                    {{-- Position --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Position</label>
+                        <input type="text" name="position" value="{{ old('position', $employee->position) }}"
+                            class="form-control">
+                    </div>
 
-            <div class="mb-3">
-                <label class="form-label">Position</label>
-                <input type="text" name="position" class="form-control"
-                    value="{{ old('position', $employee->position) }}">
-            </div>
+                    {{-- Salary --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Salary (EGP)</label>
+                        <input type="number" name="salary" value="{{ old('salary', $employee->salary) }}"
+                            class="form-control">
+                    </div>
 
-            <div class="mb-3">
-                <label class="form-label">Salary</label>
-                <input type="number" step="0.01" name="salary" class="form-control"
-                    value="{{ old('salary', $employee->salary) }}">
-            </div>
+                    {{-- Start Date --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Start Date</label>
+                        <input type="text" name="start_date" value="{{ old('start_date', $employee->start_date) }}"
+                            class="form-control flatpickr">
+                    </div>
 
-            <div class="mb-3">
-                <label class="form-label">Start Date</label>
-                <input type="date" name="start_date" class="form-control"
-                    value="{{ old('start_date', $employee->start_date) }}">
-            </div>
+                    {{-- Address --}}
+                    <div class="col-md-12">
+                        <label class="form-label">Address</label>
+                        <input type="text" name="address" value="{{ old('address', $employee->address) }}"
+                            class="form-control">
+                    </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route('employees.show', $employee) }}" class="btn btn-secondary">Cancel</a>
-        </form>
+                    {{-- Personal Image --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Personal Image</label>
+                        <input type="file" name="personal_image" class="form-control">
+                        @if ($employee->personal_image)
+                            <img src="{{ asset('storage/' . $employee->personal_image) }}" class="rounded mt-2"
+                                style="width: 100px; height:100px; object-fit:cover;">
+                        @endif
+                    </div>
+
+                    {{-- National ID --}}
+                    <div class="col-md-6">
+                        <label class="form-label">National ID</label>
+                        <input type="text" name="national_id" value="{{ old('national_id', $employee->national_id) }}"
+                            class="form-control">
+                    </div>
+
+                    {{-- National ID Image --}}
+                    <div class="col-md-6">
+                        <label class="form-label">National ID Image</label>
+                        <input type="file" name="national_id_image" class="form-control">
+                        @if ($employee->national_id_image)
+                            <img src="{{ asset('storage/' . $employee->national_id_image) }}" class="rounded mt-2"
+                                style="width: 100px; height:100px; object-fit:cover;">
+                        @endif
+                    </div>
+
+                    {{-- Birthday --}}
+                    <div class="col-md-6">
+                        <label class="form-label">Birthday</label>
+                        <input type="text" name="birthday" value="{{ old('birthday', $employee->birthday) }}"
+                            class="form-control flatpickr">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Status</label>
+                        <select name="status" class="form-select" required>
+                            <option value="pending" {{ $employee->status == 'pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="active" {{ $employee->status == 'active' ? 'selected' : '' }}>Active</option>
+                            <option value="terminated" {{ $employee->status == 'terminated' ? 'selected' : '' }}>Terminated
+                                (مرفود)</option>
+                            <option value="resigned" {{ $employee->status == 'resigned' ? 'selected' : '' }}>Resigned
+                                (استقال)</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-semibold">Status Reason (optional)</label>
+                        <input type="text" name="status_reason" class="form-control"
+                            placeholder="Enter reason for status change"
+                            value="{{ old('status_reason', $employee->status_reason) }}">
+                    </div>
+                </div>
+
+                <div class="mt-4 text-end">
+                    <a href="{{ route('employees.index') }}" class="btn btn-light">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update Employee</button>
+                </div>
+            </form>
+        </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        flatpickr('.flatpickr', {});
+    </script>
 @endsection
